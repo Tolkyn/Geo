@@ -1,0 +1,16 @@
+'''global num_URL
+num_URL=0
+def Pagination(tokens, num_URL):
+    global timestamp, sett
+    sett=[]
+    # while len(sett) != 0:
+    URL_4 = ' http://invictusfitness.perfectgym.com/Api/Classes/Classes?clubId=2&timestamp='+ str(num_URL)
+    headers_4 = {'Authorization': 'Bearer  $ACCESS_TOKEN'}
+    headers_4['Authorization'] = tokens
+    r_4 = requests.get(URL_4, headers=headers_4)
+    r_4=r_4.json()
+    elements=r_4['elements']
+    for i in elements:
+        timestamp=i['timestamp']
+        sett.append(timestamp)
+        num_URL=sett[-1]'''
