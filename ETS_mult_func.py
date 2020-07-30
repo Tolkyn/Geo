@@ -16,16 +16,16 @@ def Token():
 
 
 def ID(token, tokens):
-    now = int(datetime.datetime.now().timestamp())
-    d_from = datetime.datetime(2020, 7, 2)
-    to = 0
+    today = datetime.datetime.now()
+    d_from = datetime.datetime(2020, 7, 1)
+    d_to=d_from + timedelta(days=7)
     sett = []
-    while  to<=now:
-        d_to = d_from + timedelta(days=7)
+    while  int(d_to.timestamp()) <= int(today.timestamp()):
         to= int(d_to.timestamp())
         from_=int(d_from.timestamp())
         URL_2 = 'https://www.ets-tender.kz/integration/json/TradeProcedures.GetList?access_token=' + str(token) + '&date_from=' + str(from_) + '&date_to=' + str(to)
         d_from = d_from + timedelta(days=7)
+        d_to=d_from+timedelta(days=7)
         headers_2 = {'Authorization': 'Bearer  $ACCESS_TOKEN'}
         headers_2['Authorization'] = tokens
         r_2 = requests.get(URL_2, headers=headers_2).json()
@@ -33,8 +33,24 @@ def ID(token, tokens):
         for i in r_2:
             ID = i['id']
             sett.append(ID)
-    print("Number of elem in set:", len(sett))
-    print("Second funct works")
+    else:
+
+        d_from=d_from
+        d_to=today
+        to= int(d_to.timestamp())
+        from_=int(d_from.timestamp())
+        print( 'From:', d_from)
+        print('To:', d_to)
+        URL_2 = 'https://www.ets-tender.kz/integration/json/TradeProcedures.GetList?access_token=' + str(token) + '&date_from=' + str(from_) + '&date_to=' + str(to)
+        d_from = d_from + timedelta(days=7)
+        d_to=d_from+timedelta(days=7)
+        headers_2 = {'Authorization': 'Bearer  $ACCESS_TOKEN'}
+        headers_2['Authorization'] = tokens
+        r_2 = requests.get(URL_2, headers=headers_2).json()
+        r_2 = r_2['trade_list']
+        for i in r_2:
+            ID = i['id']
+            sett.append(ID)
     return sett
 
 def FreshData(token, tokens):
