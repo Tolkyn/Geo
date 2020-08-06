@@ -36,7 +36,7 @@ def ref_buy_lot_reject_reason_1(**context):
     headers_1['Authorization'] = token
     next_page = 'none'
     
-    conn.execute('TRUNCATE TABLE ref_buy_lot_reject_reason')
+    cnxn.execute('TRUNCATE TABLE ref_buy_lot_reject_reason')
     
     while next_page != '':
         r_n = requests.get(URL_n, headers=headers_1, verify=False).json()
@@ -54,9 +54,11 @@ def ref_reason_2(**context):
     token = ('Bearer' + ' ' + 'f309ecc15d574833c45713da702049e2')
     headers_1 = { 'Content-Type' : 'application/json','Authorization':'none' }
     headers_1['Authorization'] = token
-
     next_page = 'none'
     URL_n = 'https://ows.goszakup.gov.kz/v3/refs/ref_reason'
+    
+    cnxn.execute('TRUNCATE TABLE ref_reason')
+    
     while next_page != '':
         r_n = requests.get(URL_n, headers=headers_1, verify=False).json()
         print(r_n)
@@ -73,7 +75,9 @@ def ref_contract_type_3(**context):
     token = ('Bearer' + ' ' + 'f309ecc15d574833c45713da702049e2')
     headers_1 = { 'Content-Type' : 'application/json','Authorization':'none' }
     headers_1['Authorization'] = token
-
+    
+    cnxn.execute('TRUNCATE TABLE ref_contract_type')
+    
     next_page = 'none'
     URL_n = 'https://ows.goszakup.gov.kz/v3/refs/ref_contract_type'
     while next_page != '':
@@ -94,6 +98,9 @@ def ref_contract_cancel_4(**context):
     headers_1['Authorization'] = token
     next_page = 'none'
     URL_n = 'https://ows.goszakup.gov.kz/v3/refs/ref_contract_cancel'
+    
+    cnxn.execute('TRUNCATE TABLE ref_contract_cancel')
+    
     while next_page != '':
         r_n = requests.get(URL_n, headers=headers_1, verify=False).json()
         print(r_n)
@@ -112,6 +119,9 @@ def ref_currency_5(**context):
     headers_1['Authorization'] = token
     next_page = 'none'
     URL_n = 'https://ows.goszakup.gov.kz/v3/refs/ref_currency?limit=200'
+    
+    cnxn.execute('TRUNCATE TABLE ref_currency')
+    
     while next_page != '':
         r_n = requests.get(URL_n, headers=headers_1, verify=False).json()
         next_page = r_n['next_page']
@@ -129,10 +139,11 @@ def ref_contract_year_type_6(**context):
     token = ('Bearer' + ' ' + 'f309ecc15d574833c45713da702049e2')
     headers_1 = { 'Content-Type' : 'application/json','Authorization':'none' }
     headers_1['Authorization'] = token
-
     next_page = 'none'
     URL_n = 'https://ows.goszakup.gov.kz/v3/refs/ref_contract_year_type'
 
+    cnxn.execute('TRUNCATE TABLE ref_contract_year_type')
+    
     while next_page != '':
         r_n = requests.get(URL_n, headers=headers_1, verify=False).json()
         print(r_n)
@@ -149,9 +160,11 @@ def ref_contract_agr_form_7(**context):
     token = ('Bearer' + ' ' + 'f309ecc15d574833c45713da702049e2')
     headers_1 = { 'Content-Type' : 'application/json','Authorization':'none' }
     headers_1['Authorization'] = token
-
     next_page = 'none'
     URL_n = 'https://ows.goszakup.gov.kz/v3/refs/ref_contract_agr_form'
+    
+    cnxn.execute('TRUNCATE TABLE ref_contract_agr_form')
+    
     while next_page != '':
         r_n = requests.get(URL_n, headers=headers_1, verify=False).json()
         next_page = r_n['next_page']
@@ -169,6 +182,9 @@ def ref_contract_status_8(**context):
     headers_1['Authorization'] = token
     next_page = 'none'
     URL_n = 'https://ows.goszakup.gov.kz/v3/refs/ref_contract_status'
+    
+    cnxn.execute('TRUNCATE TABLE ref_contract_status')
+    
     while next_page != '':
         r_n = requests.get(URL_n, headers=headers_1, verify=False).json()
         next_page = r_n['next_page']
@@ -186,6 +202,9 @@ def ref_comm_roles_9(**context):
     headers_1['Authorization'] = token
     next_page = 'none'
     URL_n = 'https://ows.goszakup.gov.kz/v3/refs/ref_comm_roles'
+    
+    cnxn.execute('TRUNCATE TABLE ref_comm_roles')
+    
     while next_page != '':
         r_n = requests.get(URL_n, headers=headers_1, verify=False).json()
         print(r_n)
@@ -204,8 +223,9 @@ def ref_po_st_10(**context):
     headers_1['Authorization'] = token
     next_page = 'none'
     URL_n = 'https://ows.goszakup.gov.kz/v3/refs/ref_po_st'
-
-
+    
+    cnxn.execute('TRUNCATE TABLE ref_po_st')
+    
     while next_page != '':
         r_n = requests.get(URL_n, headers=headers_1, verify=False).json()
         print(r_n)
@@ -224,7 +244,8 @@ def ref_buy_status_11(**context):
     headers_1['Authorization'] = token
     next_page = 'none'
     URL_n = 'https://ows.goszakup.gov.kz/v3/refs/ref_buy_status'
-
+    
+    cnxn.execute('TRUNCATE TABLE ref_buy_status')
 
     while next_page != '':
         r_n = requests.get(URL_n, headers=headers_1, verify=False).json()
@@ -244,7 +265,9 @@ def ref_type_trade_12(**context):
     headers_1['Authorization'] = token
     next_page = 'none'
     URL_n = 'https://ows.goszakup.gov.kz/v3/refs/ref_type_trade'
-
+    
+    cnxn.execute('TRUNCATE TABLE ref_type_trade')
+    
     while next_page != '':
         r_n = requests.get(URL_n, headers=headers_1, verify=False).json()
         print(r_n)
@@ -263,7 +286,8 @@ def ref_budget_type_13(**context):
     headers_1['Authorization'] = token
     next_page = 'none'
     URL_n = 'https://ows.goszakup.gov.kz/v3/refs/ref_budget_type'
-
+    
+    cnxn.execute('TRUNCATE TABLE ref_budget_type')
 
     while next_page != '':
         r_n = requests.get(URL_n, headers=headers_1, verify=False).json()
@@ -283,7 +307,8 @@ def ref_amendm_agreem_justf_14(**context):
     headers_1['Authorization'] = token
     next_page = 'none'
     URL_n = 'https://ows.goszakup.gov.kz/v3/refs/ref_amendm_agreem_justif'
-
+    
+    cnxn.execute('TRUNCATE TABLE ref_amendm_agreem_justf')
 
     while next_page != '':
         r_n = requests.get(URL_n, headers=headers_1, verify=False).json()
@@ -303,7 +328,8 @@ def ref_amendm_agreem_type_15(**context):
     headers_1['Authorization'] = token
     next_page = 'none'
     URL_n = 'https://ows.goszakup.gov.kz/v3/refs/ref_amendment_agreem_type'
-
+    
+    cnxn.execute('TRUNCATE TABLE ref_amendm_agreem_type')
 
     while next_page != '':
         r_n = requests.get(URL_n, headers=headers_1, verify=False).json()
@@ -339,6 +365,7 @@ task_8 = PythonOperator(task_id='ref_contract_status_8', provide_context=True, p
 task_9 = PythonOperator(task_id='ref_comm_roles_9', provide_context=True, python_callable = ref_comm_roles_9, dag=dag)
 
 task_10 = PythonOperator(task_id='ref_po_st_10', provide_context=True, python_callable=ref_po_st_10, dag=dag)
+
 task_11 = PythonOperator(task_id='ref_buy_status_11', provide_context=True, python_callable=ref_buy_status_11, dag=dag)
 
 task_12 = PythonOperator(task_id='ref_type_trade_12', provide_context=True, python_callable=ref_type_trade_12, dag=dag) 
