@@ -35,6 +35,9 @@ def ref_buy_lot_reject_reason_1(**context):
     headers_1 = { 'Content-Type' : 'application/json','Authorization':'none' }
     headers_1['Authorization'] = token
     next_page = 'none'
+    
+    conn.execute('TRUNCATE TABLE ref_buy_lot_reject_reason')
+    
     while next_page != '':
         r_n = requests.get(URL_n, headers=headers_1, verify=False).json()
         next_page = r_n['next_page']
