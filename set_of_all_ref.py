@@ -22,7 +22,7 @@ dag = DAG('Refreshing_data_weekly',
 dsn = 'sqlserverdatasource'
 user='sa'
 password = 'P@ssw0rd@2020'
-database = 'expDB'
+database = 'GS'
 con_string = 'DSN=%s;UID=%s;PWD=%s;DATABASE=%s;'% (dsn, user, password, database)
 cnxn = pyodbc.connect(con_string)
 
@@ -36,7 +36,7 @@ def ref_buy_lot_reject_reason_1(**context):
     headers_1['Authorization'] = token
     next_page = 'none'
     
-    cnxn.execute('TRUNCATE TABLE ref_buy_lot_reject_reason')
+    cnxn.execute('TRUNCATE TABLE gs.dbo.ref_buy_lot_reject_reason')
     
     while next_page != '':
         r_n = requests.get(URL_n, headers=headers_1, verify=False).json()
@@ -57,7 +57,7 @@ def ref_reason_2(**context):
     next_page = 'none'
     URL_n = 'https://ows.goszakup.gov.kz/v3/refs/ref_reason'
     
-    cnxn.execute('TRUNCATE TABLE ref_reason')
+    cnxn.execute('TRUNCATE TABLE gs.dbo.ref_reason')
     
     while next_page != '':
         r_n = requests.get(URL_n, headers=headers_1, verify=False).json()
@@ -76,7 +76,7 @@ def ref_contract_type_3(**context):
     headers_1 = { 'Content-Type' : 'application/json','Authorization':'none' }
     headers_1['Authorization'] = token
     
-    cnxn.execute('TRUNCATE TABLE ref_contract_type')
+    cnxn.execute('TRUNCATE TABLE gs.dbo.ref_contract_type')
     
     next_page = 'none'
     URL_n = 'https://ows.goszakup.gov.kz/v3/refs/ref_contract_type'
@@ -99,7 +99,7 @@ def ref_contract_cancel_4(**context):
     next_page = 'none'
     URL_n = 'https://ows.goszakup.gov.kz/v3/refs/ref_contract_cancel'
     
-    cnxn.execute('TRUNCATE TABLE ref_contract_cancel')
+    cnxn.execute('TRUNCATE TABLE gs.dbo.ref_contract_cancel')
     
     while next_page != '':
         r_n = requests.get(URL_n, headers=headers_1, verify=False).json()
@@ -120,7 +120,7 @@ def ref_currency_5(**context):
     next_page = 'none'
     URL_n = 'https://ows.goszakup.gov.kz/v3/refs/ref_currency?limit=200'
     
-    cnxn.execute('TRUNCATE TABLE ref_currency')
+    cnxn.execute('TRUNCATE TABLE gs.dbo.ref_currency')
     
     while next_page != '':
         r_n = requests.get(URL_n, headers=headers_1, verify=False).json()
@@ -142,7 +142,7 @@ def ref_contract_year_type_6(**context):
     next_page = 'none'
     URL_n = 'https://ows.goszakup.gov.kz/v3/refs/ref_contract_year_type'
 
-    cnxn.execute('TRUNCATE TABLE ref_contract_year_type')
+    cnxn.execute('TRUNCATE TABLE gs.dbo.ref_contract_year_type')
     
     while next_page != '':
         r_n = requests.get(URL_n, headers=headers_1, verify=False).json()
@@ -163,7 +163,7 @@ def ref_contract_agr_form_7(**context):
     next_page = 'none'
     URL_n = 'https://ows.goszakup.gov.kz/v3/refs/ref_contract_agr_form'
     
-    cnxn.execute('TRUNCATE TABLE ref_contract_agr_form')
+    cnxn.execute('TRUNCATE TABLE gs.dbo.ref_contract_agr_form')
     
     while next_page != '':
         r_n = requests.get(URL_n, headers=headers_1, verify=False).json()
@@ -183,7 +183,7 @@ def ref_contract_status_8(**context):
     next_page = 'none'
     URL_n = 'https://ows.goszakup.gov.kz/v3/refs/ref_contract_status'
     
-    cnxn.execute('TRUNCATE TABLE ref_contract_status')
+    cnxn.execute('TRUNCATE TABLE gs.dbo.ref_contract_status')
     
     while next_page != '':
         r_n = requests.get(URL_n, headers=headers_1, verify=False).json()
@@ -203,7 +203,7 @@ def ref_comm_roles_9(**context):
     next_page = 'none'
     URL_n = 'https://ows.goszakup.gov.kz/v3/refs/ref_comm_roles'
     
-    cnxn.execute('TRUNCATE TABLE ref_comm_roles')
+    cnxn.execute('TRUNCATE TABLE gs.dbo.ref_comm_roles')
     
     while next_page != '':
         r_n = requests.get(URL_n, headers=headers_1, verify=False).json()
@@ -224,7 +224,7 @@ def ref_po_st_10(**context):
     next_page = 'none'
     URL_n = 'https://ows.goszakup.gov.kz/v3/refs/ref_po_st'
     
-    cnxn.execute('TRUNCATE TABLE ref_po_st')
+    cnxn.execute('TRUNCATE gs.dbo.TABLE ref_po_st')
     
     while next_page != '':
         r_n = requests.get(URL_n, headers=headers_1, verify=False).json()
@@ -245,7 +245,7 @@ def ref_buy_status_11(**context):
     next_page = 'none'
     URL_n = 'https://ows.goszakup.gov.kz/v3/refs/ref_buy_status'
     
-    cnxn.execute('TRUNCATE TABLE ref_buy_status')
+    cnxn.execute('TRUNCATE TABLE gs.dbo.ref_buy_status')
 
     while next_page != '':
         r_n = requests.get(URL_n, headers=headers_1, verify=False).json()
@@ -266,7 +266,7 @@ def ref_type_trade_12(**context):
     next_page = 'none'
     URL_n = 'https://ows.goszakup.gov.kz/v3/refs/ref_type_trade'
     
-    cnxn.execute('TRUNCATE TABLE ref_type_trade')
+    cnxn.execute('TRUNCATE TABLE gs.dbo.ref_type_trade')
     
     while next_page != '':
         r_n = requests.get(URL_n, headers=headers_1, verify=False).json()
@@ -287,7 +287,7 @@ def ref_budget_type_13(**context):
     next_page = 'none'
     URL_n = 'https://ows.goszakup.gov.kz/v3/refs/ref_budget_type'
     
-    cnxn.execute('TRUNCATE TABLE ref_budget_type')
+    cnxn.execute('TRUNCATE TABLE gs.dbo.ref_budget_type')
 
     while next_page != '':
         r_n = requests.get(URL_n, headers=headers_1, verify=False).json()
@@ -308,7 +308,7 @@ def ref_amendm_agreem_justf_14(**context):
     next_page = 'none'
     URL_n = 'https://ows.goszakup.gov.kz/v3/refs/ref_amendm_agreem_justif'
     
-    cnxn.execute('TRUNCATE TABLE ref_amendm_agreem_justf')
+    cnxn.execute('TRUNCATE TABLE gs.dbo.ref_amendm_agreem_justf')
 
     while next_page != '':
         r_n = requests.get(URL_n, headers=headers_1, verify=False).json()
@@ -329,7 +329,7 @@ def ref_amendm_agreem_type_15(**context):
     next_page = 'none'
     URL_n = 'https://ows.goszakup.gov.kz/v3/refs/ref_amendment_agreem_type'
     
-    cnxn.execute('TRUNCATE TABLE ref_amendm_agreem_type')
+    cnxn.execute('TRUNCATE TABLE gs.dbo.ref_amendm_agreem_type')
 
     while next_page != '':
         r_n = requests.get(URL_n, headers=headers_1, verify=False).json()
